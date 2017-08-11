@@ -1,0 +1,168 @@
+{
+      "type": "page",
+      "name": "CCBlueForms",
+      "components": [
+            {
+                  "name": "getStudents",
+                  "type": "resource",
+                  "staticData": [],
+                  "resource": "virtualDomains.BFStuInfo"
+            },
+            {
+                  "name": "getTerm",
+                  "type": "resource",
+                  "staticData": [],
+                  "resource": "virtualDomains.BFTerms"
+            },
+            {
+                  "name": "getStatus",
+                  "type": "resource",
+                  "staticData": [],
+                  "resource": "virtualDomains.BFStatus"
+            },
+            {
+                  "name": "getClass",
+                  "type": "resource",
+                  "staticData": [],
+                  "resource": "virtualDomains.BFClass"
+            },
+            {
+                  "name": "Block01",
+                  "type": "block",
+                  "showInitially": true,
+                  "components": [
+                        {
+                              "name": "SelectForm",
+                              "type": "form",
+                              "label": "Selections",
+                              "nextButtonLabel": "Next",
+                              "showInitially": true,
+                              "components": [
+                                    {
+                                          "name": "searchTerm",
+                                          "type": "select",
+                                          "label": "Term",
+                                          "required": false,
+                                          "loadInitially": true,
+                                          "sourceModel": "getTerm",
+                                          "labelKey": "TERM_LABEL",
+                                          "valueKey": "TERM_VALUE",
+                                          "sourceParameters": {},
+                                          "placeholder": "&nbsp;"
+                                    },
+                                    {
+                                          "name": "searchStatus",
+                                          "type": "select",
+                                          "sourceModel": "getStatus",
+                                          "labelKey": "STATUS_LABEL",
+                                          "valueKey": "STATUS_VALUE",
+                                          "sourceParameters": {},
+                                          "required": false,
+                                          "loadInitially": true,
+                                          "label": "Status",
+                                          "placeholder": "&nbsp;"
+                                    },
+                                    {
+                                          "name": "searchClass",
+                                          "type": "select",
+                                          "sourceModel": "getClass",
+                                          "labelKey": "CLASS_LABEL",
+                                          "valueKey": "CLASS_VALUE",
+                                          "label": "Class",
+                                          "sourceParameters": {},
+                                          "required": false,
+                                          "placeholder": "&nbsp;",
+                                          "loadInitially": true
+                                    }
+                              ],
+                              "submitLabel": "Search",
+                              "submit": "if (document.getElementById('pbid-searchTerm').options.selectedIndex == 0) {\n  alert(\"Please select a term\",{flash:true}); \n  return;\n}\n\n$Block02.$visible = true;\n$StudentGrid.$load({clearCache:true});"
+                        }
+                  ],
+                  "label": ""
+            },
+            {
+                  "name": "Block02",
+                  "type": "block",
+                  "showInitially": false,
+                  "components": [
+                        {
+                              "name": "StudentGrid",
+                              "type": "grid",
+                              "model": "getStudents",
+                              "label": "Students",
+                              "parameters": {
+                                    "search_term": "$searchTerm.$selected?$searchTerm.$selected.TERM_VALUE:null",
+                                    "search_status": "$searchStatus.$selected?$searchStatus.$selected.STATUS_VALUE:null",
+                                    "search_class": "$searchClass.$selected?$searchClass.$selected.CLASS_VALUE:null"
+                              },
+                              "allowNew": false,
+                              "allowModify": false,
+                              "allowDelete": false,
+                              "allowReload": false,
+                              "pageSize": 30,
+                              "loadInitially": false,
+                              "components": [
+                                    {
+                                          "name": "Term",
+                                          "type": "display",
+                                          "label": "Term",
+                                          "model": "TERM",
+                                          "loadInitially": false,
+                                          "asHtml": false
+                                    },
+                                    {
+                                          "name": "StuID",
+                                          "type": "display",
+                                          "label": "ID",
+                                          "model": "ID",
+                                          "loadInitially": false,
+                                          "asHtml": false
+                                    },
+                                    {
+                                          "name": "FirstName",
+                                          "type": "display",
+                                          "label": "First Name",
+                                          "model": "FIRST_NAME",
+                                          "loadInitially": false,
+                                          "asHtml": false
+                                    },
+                                    {
+                                          "name": "MiddleInitial",
+                                          "type": "display",
+                                          "label": "MI",
+                                          "model": "MI",
+                                          "loadInitially": false,
+                                          "asHtml": false
+                                    },
+                                    {
+                                          "name": "LastName",
+                                          "type": "display",
+                                          "label": "Last Name",
+                                          "model": "LAST_NAME",
+                                          "loadInitially": false,
+                                          "asHtml": false
+                                    },
+                                    {
+                                          "name": "Status",
+                                          "type": "display",
+                                          "label": "Status",
+                                          "model": "STATUS",
+                                          "loadInitially": false,
+                                          "asHtml": false
+                                    },
+                                    {
+                                          "name": "Class",
+                                          "type": "display",
+                                          "label": "Class",
+                                          "model": "CLASS",
+                                          "loadInitially": false,
+                                          "asHtml": false
+                                    }
+                              ]
+                        }
+                  ]
+            }
+      ],
+      "label": "BlueForms"
+}
