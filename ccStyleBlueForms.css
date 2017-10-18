@@ -4,7 +4,7 @@ body, html {
   font-size: 100%;
   color: #537286;
   font-family: OpenSans-regular;
-  background-color: #E2E4E4;
+  background-color: #FFFFFF;
 }
 
 #content {
@@ -109,10 +109,12 @@ h1 {
 .flex > * { margin: 0 7px; }    
 .flex.vertical > * { margin: 7px 0; }
 
-/* Table Styles ****************************************************************************/
-#pbid-CoursesTable {
-  border: none !important;
+/* Object Styles ****************************************************************************/
+[id^="pbid-GradCountsCounts-container-"] {
+  text-align: right;
 }
+
+/* Table Styles ****************************************************************************/
 table {
   border: none !important;
   border-spacing: 0;
@@ -127,12 +129,6 @@ td {
   padding: 5px;
   vertical-align: top;
   font-size: 85%;
-}
-
-/* Form Styles ********************************************************************************/
-#pbid-ClassSearch,
-#pbid-StuLookupForm {
-  padding-top: 1em;
 }
 
 /* Input Styles ********************************************************************************/
@@ -179,13 +175,6 @@ label.pb-label {
 }
 label.pb-label.pb-boolean{
   display:inline-block;
-}
-
-/* Section Labels ********************************************************************************/
-#pbid-selectFormLabel-container {
-  font-size: 1.3em;
-  font-weight: bold;
-  padding-bottom: 0.5em;
 }
 
 /* Select Style **********************************************************************************/

@@ -32,9 +32,14 @@
                   "showInitially": true,
                   "components": [
                         {
+                              "name": "selectFormLabel",
+                              "type": "literal",
+                              "value": "Criteria"
+                        },
+                        {
                               "name": "SelectForm",
                               "type": "form",
-                              "label": "Selections",
+                              "label": "",
                               "nextButtonLabel": "Next",
                               "showInitially": true,
                               "components": [
@@ -79,7 +84,21 @@
                               "submit": "if (document.getElementById('pbid-searchTerm').options.selectedIndex == 0) {\n  alert(\"Please select a term\",{flash:true}); \n  return;\n}\n\n$Block02.$visible = true;\n$StudentGrid.$load({clearCache:true});"
                         }
                   ],
-                  "label": ""
+                  "label": "",
+                  "style": "blocks"
+            },
+            {
+                  "name": "BlockNull01",
+                  "type": "block",
+                  "style": "blockSpace",
+                  "showInitially": true,
+                  "components": [
+                        {
+                              "name": "BlockSpace01",
+                              "type": "literal",
+                              "value": "&nbsp;"
+                        }
+                  ]
             },
             {
                   "name": "Block02",
@@ -100,7 +119,7 @@
                               "allowModify": false,
                               "allowDelete": false,
                               "allowReload": false,
-                              "pageSize": 30,
+                              "pageSize": 20,
                               "loadInitially": false,
                               "components": [
                                     {
@@ -161,8 +180,10 @@
                                     }
                               ]
                         }
-                  ]
+                  ],
+                  "style": "blocks"
             }
       ],
-      "label": "BlueForms"
+      "label": "BlueForms",
+      "importCSS": "ccStyleBlueForms"
 }
