@@ -15,8 +15,13 @@ else if (rpt.options[rpt.selectedIndex].innerHTML == 'Students with a Home City 
   hideAllForms();
   $StuHomeCityOf.$visible = true;
 }
+else if (rpt.options[rpt.selectedIndex].innerHTML == 'Current FTE Count') {
+  hideAllForms();
+  $CurrentFTECount.$visible = true;
+}
 
 function hideAllForms() {
   $GraduateCounts.$visible = false;
   $StuHomeCityOf.$visible = false;
+  $CurrentFTECount.$visible = false;
 }
